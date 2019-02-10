@@ -52,6 +52,7 @@ void uart_init ( void )
 	put32(AUX_MU_BAUD_REG,270);             //Set baud rate to 115200
 
 	put32(AUX_MU_CNTL_REG,3);               //Finally, enable transmitter and receiver
+	put32(AUX_MU_IER_REG,3);                //enable receive and transmit interrupts
 }
 
 
@@ -59,4 +60,9 @@ void uart_init ( void )
 void putc ( void* p, char c)
 {
 	uart_send(c);
+}
+
+void handle_mini_uart_irq( void )
+{
+	uart_send(uart_recv());
 }
