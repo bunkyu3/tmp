@@ -1,4 +1,3 @@
-#include "timer.h"
 #include "irq.h"
 #include "mini_uart.h"
 
@@ -7,7 +6,6 @@ void kernel_main(void)
 {
 	uart_init();
 	irq_vector_init();
-	timer_init();
 	enable_interrupt_controller();
 	enable_irq();
 
