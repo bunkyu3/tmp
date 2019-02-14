@@ -1,5 +1,4 @@
 #include "utils.h"
-#include "printf.h"
 #include "timer.h"
 #include "mini_uart.h"
 #include "entry.h"
@@ -35,7 +34,7 @@ void enable_interrupt_controller()
 
 void show_invalid_entry_message(int type, unsigned long esr, unsigned long address)
 {
-	printf("%s, ESR: %x, address: %x\r\n", entry_error_messages[type], esr, address);
+	uart_send('I');
 }
 
 void handle_irq(void)
@@ -49,6 +48,6 @@ void handle_irq(void)
 			handle_mini_uart_irq();
 			break;
 		default:
-			printf("Unknown pending irq: %x\r\n", irq);
+			uart_send('D');
 	}
 }
