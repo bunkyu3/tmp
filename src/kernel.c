@@ -15,7 +15,11 @@ void kernel_main(void)
 	enable_interrupt_controller();
 	enable_irq();
 
+	volatile long i;
+
 	while (1){
-		;
+		for(i=0; i<300000; i++)
+			;
+		uart_send('k');
 	}	
 }
