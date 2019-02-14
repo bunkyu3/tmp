@@ -62,7 +62,3 @@ void putc ( void* p, char c)
 	uart_send(c);
 }
 
-void handle_mini_uart_irq( void )
-{
-	uart_send(uart_recv());
-}
